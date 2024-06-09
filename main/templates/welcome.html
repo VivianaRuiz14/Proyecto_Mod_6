@@ -1,17 +1,15 @@
 {% extends 'base.html'%}
 {% block content %}
-<section id="CONTACTO"></section>
-<H4 class="text-center"> CONTACTO</H4>
-<div class="mb-3">
-  <label for="formGroupExampleInput" class="form-label">Nombre</label>
-  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-</div>
-<div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Asunto</label>
-  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-</div>
-</div>  
-</div>
-</div>
-</div>
+  <div class="container my-3">
+    <div>Bienvenido Cliente</div>
+    {% for msje  in errores %}
+      <div class="alert alert-danger" role="alert"> {{msje}}</div>
+    {% endfor %}
+    <p>Escribanos ante cualquier consulta</p>
+    <form action="/welcome/" method="post">
+      {% csrf_token%}
+      {{form}}
+      <button id="btnEnviar" type="submit" class="btn btn-success"> Enviar</button>
+    </form>
+  </div>
 {% endblock %}
