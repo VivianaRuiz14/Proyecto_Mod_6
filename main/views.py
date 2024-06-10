@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from main.postres import postres
 from main.forms import contactform
+from main.models import contacto 
 
 
 # Create your views here.
@@ -20,6 +21,9 @@ def welcome(req):
     else:
         form = contactform(req.POST)
     if form.is_valid():
+        contacto.objects.create(
+            **form.cleaned_data
+        )
         return redirect('/contactus')
     context = {'form': form}
     return render(req, 'welcome.html', context)

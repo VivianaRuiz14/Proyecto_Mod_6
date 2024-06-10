@@ -1,3 +1,7 @@
 from django.contrib import admin
+from main.models import contacto
 
-# Register your models here.
+class mainAdmin(admin.ModelAdmin):
+  pass
+
+admin.site.register(contacto, mainAdmin)
