@@ -19,13 +19,39 @@
             <a class="nav-link" href="/contact">Contactenos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/help">Ayuda</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true"></a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+          <div id="list-group-flush" class="d-flex mx-5" role="search">
+
+            {% if user.is_authenticated %}
+            <span class="d-inline-block m-1 text-light" > Hola {{ user.username }}</span>
+            <form id="logout-form" action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger ms-2 btn-sm">Logout</button>
+              </form>
+          {% else %}
+            <div class="d-flex">
+              <a href="{% url 'login' %}" class="btn btn-success btn-sm">Login</a>
+            </div>
+            {% endif %}
+          </div>
       </div>
+      
     </div>
   </nav>
+  {% if messages %}
+    {% for message in messages %}
+    <div class="row">
+      <div class="col-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{ message }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endif %}
