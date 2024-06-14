@@ -27,6 +27,11 @@
                 {% block header %} 
                 {% include 'snippets/header.html' %}
                 {% endblock %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p> {{ message}}</p>
+                    {% endfor %}
+                {% endif %}
             </header>
             {% block navbar %}
             {% include 'snippets/navbar.html' %}

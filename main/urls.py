@@ -1,7 +1,8 @@
 from django.urls import path
-from main.views import index,about,welcome, contactus, contact, logout_view, ayuda
+from main.views import index,about,welcome, contactus, contact, logout_view, ayuda, loginviewpropia
 from django.contrib.auth import views as auth_views
 
+ 
 urlpatterns = [
     path('', index,name="index"),
     path('about/', about, name="about"),

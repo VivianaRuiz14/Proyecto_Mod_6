@@ -6,6 +6,11 @@ from main.models import contacto, Flan
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView
+
+class loginviewpropia(SuccessMessageMixin ,LoginView):
+      success_message = 'Has ingresado correctamente'
 
 
 # Create your views here.
