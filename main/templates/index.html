@@ -1,4 +1,46 @@
 {% extends 'base.html' %} 
+{% block css %}
+  <style>
+    @keyframes cambio_color {
+      0% {background-color: red;}
+      50% {
+        background-color: yellow;
+        rotate: y 180deg;
+      }
+      100% {
+        background-color: red;
+        rotate: y 360deg;
+      }
+    }
+
+    .btn-cambiante:hover {
+      background-color: red;
+      animation: cambio_color;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes estirar_titulo {
+      0% {
+        letter-spacing: normal;
+      }
+      50% {
+        letter-spacing: 1rem;
+      }
+      100% {
+        letter-spacing: normal;
+      }
+    }
+
+    .card-title:hover {
+      animation: estirar_titulo;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+
+  </style>
+{% endblock %}
 {% block content %}
 <div class="container">
   <h3 class="text-center text primary"></h3>
